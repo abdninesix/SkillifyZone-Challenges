@@ -8,11 +8,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-/task1/server/.env
-/task1/client/.env
+
 dist
 dist-ssr
 *.local
+*.env
 
 # Editor directories and files
 .vscode/*
