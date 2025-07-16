@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
+import Banner from '../componenets/Banner';
 
 function PostDetail() {
   const { id } = useParams();
@@ -40,31 +41,38 @@ function PostDetail() {
     }
   };
 
-  if (!post) return <div className="text-center mt-10">Loading...</div>;
+  if (!post) return (
+    <>
+      <Banner />
+      <div className="text-center mt-10">Loading...</div>
+    </>
+  );
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 p-4 border rounded shadow">
-      <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
-      <p className="text-sm text-gray-600 mb-4">by {post.userId?.username}</p>
-      <p className="text-gray-800 whitespace-pre-line">{post.content}</p>
+    <>
+      <Banner text={post.title} />
+      <div className="mt-10 p-4 bg-gray-100 rounded shadow">
+        <p className="text-sm text-gray-600 mb-4">by {post.userId?.username}</p>
+        <p className="text-gray-800 whitespace-pre-line">{post.content}</p>
 
-      {userId === post.userId?._id && (
-        <div className="flex gap-4 mt-6">
-          <Link
-            to={`/edit/${post._id}`}
-            className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-          >
-            Edit
-          </Link>
-          <button
-            onClick={handleDelete}
-            className="px-4 py-2 cursor-pointer bg-red-600 text-white rounded hover:bg-red-700"
-          >
-            Delete
-          </button>
-        </div>
-      )}
-    </div>
+        {userId === post.userId?._id && (
+          <div className="flex justify-end gap-2 text-sm mt-6">
+            <Link
+              to={`/edit/${post._id}`}
+              className="text-myblue hover:underline"
+            >
+              Edit
+            </Link>
+            <button
+              onClick={handleDelete}
+              className="cursor-pointer text-red-500 hover:underline"
+            >
+              Delete
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
+import Banner from '../componenets/Banner';
 
 function EditPost() {
   const { id } = useParams();
@@ -35,29 +36,32 @@ function EditPost() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-4 border rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Edit Post</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="title"
-          value={form.title}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <textarea
-          name="content"
-          value={form.content}
-          onChange={handleChange}
-          rows="8"
-          className="w-full p-2 border rounded"
-          required
-        ></textarea>
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
-          Update
-        </button>
-      </form>
-    </div>
+    <>
+      <Banner text="Edit your thoughts!" />
+      <div className="absolute top-20 right-48 max-w-md mx-auto p-4 flex flex-col bg-gray-100 rounded shadow">
+        <h2 className="text-2xl font-bold mb-4">Edit Post</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            name="title"
+            value={form.title}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            required
+          />
+          <textarea
+            name="content"
+            value={form.content}
+            onChange={handleChange}
+            rows="8"
+            className="w-full p-2 border rounded"
+            required
+          ></textarea>
+          <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+            Update
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 
