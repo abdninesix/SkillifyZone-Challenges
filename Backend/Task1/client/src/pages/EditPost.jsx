@@ -45,7 +45,7 @@ function EditPost() {
             name="title"
             value={form.title}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full outline-none p-2 border rounded"
             required
           />
           <textarea
@@ -53,7 +53,7 @@ function EditPost() {
             value={form.content}
             onChange={handleChange}
             rows="8"
-            className="w-full p-2 border rounded"
+            className="w-full outline-none p-2 border rounded"
             required
           ></textarea>
           <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">

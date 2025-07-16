@@ -36,7 +36,7 @@ function Register() {
             name="username"
             type="text"
             placeholder="Username"
-            className="w-full p-2 bg-white rounded"
+            className="w-full p-2 outline-none bg-white rounded"
             onChange={handleChange}
             required
           />
@@ -44,7 +44,7 @@ function Register() {
             name="email"
             type="email"
             placeholder="Email"
-            className="w-full p-2 bg-white rounded"
+            className="w-full p-2 outline-none bg-white rounded"
             onChange={handleChange}
             required
           />
@@ -52,7 +52,7 @@ function Register() {
             name="password"
             type="password"
             placeholder="Password"
-            className="w-full p-2 bg-white rounded"
+            className="w-full p-2 outline-none bg-white rounded"
             onChange={handleChange}
             required
           />
