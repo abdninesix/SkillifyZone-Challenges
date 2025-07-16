@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
+import Banner from '../componenets/Banner';
 
 function Register() {
   const [form, setForm] = useState({ username: '', email: '', password: '' });
@@ -26,38 +27,41 @@ function Register() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-4 border rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Register</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-          required
-        />
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
-          Register
-        </button>
-      </form>
-    </div>
+    <>
+      <Banner text="Let us get you onboard!" />
+      <div className="absolute top-42 right-48 max-w-md mx-auto p-4 flex flex-col bg-gray-100 rounded shadow">
+        <h2 className="text-2xl font-bold mb-4">Register</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            name="username"
+            type="text"
+            placeholder="Username"
+            className="w-full p-2 bg-white rounded"
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="w-full p-2 bg-white rounded"
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="w-full p-2 bg-white rounded"
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="w-full bg-myblue text-white p-2 rounded hover:bg-hoverblue">
+            Register
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 

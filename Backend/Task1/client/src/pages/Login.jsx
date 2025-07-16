@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
+import Banner from '../componenets/Banner';
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -25,30 +26,33 @@ function Login() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-4 border rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-          required
-        />
-        <button type="submit" className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700">
-          Login
-        </button>
-      </form>
-    </div>
+    <>
+      <Banner text="Welcome Back!" />
+      <div className="absolute top-42 right-48 max-w-md mx-auto p-4 flex flex-col bg-gray-100 rounded shadow">
+        <h2 className="text-2xl font-bold mb-4">Login</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="w-full p-2 outline-none rounded bg-white"
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="w-full p-2 outline-none rounded bg-white"
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="w-full bg-myblue text-white p-2 rounded hover:bg-hoverblue">
+            Login
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 

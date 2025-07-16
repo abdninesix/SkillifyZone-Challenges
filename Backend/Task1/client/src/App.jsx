@@ -7,12 +7,13 @@ import EditPost from './pages/EditPost';
 import PostDetail from './pages/PostDetail';
 import Navbar from './componenets/Navbar';
 import ProtectedRoute from './auth/ProtectedRoute';
+import About from './pages/About';
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <div className="p-4">
+      <div className="px-8 md:px-16 lg:px-32 xl:px-48 duration-200">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/post/:id" element={<PostDetail />} />
@@ -20,6 +21,7 @@ function App() {
           <Route path="/new" element={<ProtectedRoute><NewPost /></ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </div>
     </Router>
