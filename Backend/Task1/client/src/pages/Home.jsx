@@ -22,10 +22,10 @@ function Home() {
           posts.map(post => (
             <div key={post._id} className="w-72 h- p-4 flex flex-col bg-gray-100 rounded shadow">
               <div className='w-full mb-2 p-2 rounded-md bg-white flex items-center justify-center'><img src="/vite.svg" alt="cover" className='w-24' /></div>
-              <h2 className="text-xl font-semibold">{post.title}</h2>
-              <p className="text-sm text-gray-500">by {post.userId?.username}</p>
-              <p className="mt-2 text-gray-700">{post.content.slice(0, 100)}...</p>
-              <Link to={`/post/${post._id}`} className="text-sm text-myblue hover:underline mt-auto ml-auto inline-block">
+              <h2 className="text-lg font-semibold">{post.title}</h2>
+              <p className="text-xs text-gray-500">by {post.userId?.username}</p>
+              <p className="mt-2 text-sm text-gray-700">{post.content.slice(0, 100)}...</p>
+              <Link to={`/post/${post._id}`} className="text-sm text-myblue hover:underline mt-auto ml-auto">
                 Read more
               </Link>
             </div>
