@@ -28,8 +28,8 @@ function Register() {
 
   return (
     <>
-      <Banner text="Let us get you onboard!" />
-      <div className="absolute top-20 right-48 max-w-md mx-auto p-4 flex flex-col bg-gray-100 rounded shadow">
+      <Banner text="Get onboard!" />
+      <div className="lg:absolute top-20 right-48 max-w-md mx-auto p-4 flex flex-col bg-gray-100 rounded shadow">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input

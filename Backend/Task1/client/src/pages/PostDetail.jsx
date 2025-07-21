@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
 import Banner from '../componenets/Banner';
+import { format } from 'timeago.js';
 
 function PostDetail() {
   const { id } = useParams();
@@ -50,10 +51,15 @@ function PostDetail() {
 
   return (
     <>
-      <Banner text={post.title} />
-      <div className="mt-10 p-4 bg-gray-100 rounded shadow">
-        <p className="text-sm text-gray-600 mb-4">by {post.userId?.username}</p>
-        <p className="text-gray-800 whitespace-pre-line">{post.content}</p>
+      <Banner text="Post details" />
+      <div className="mt-10 p-4 bg-gray-100 rounded-lg shadow">
+        <div className='lg:hidden rounded-md overflow-hidden bg-white'><img src="/cover.png" alt="cover" className='object-cover' /></div>
+        <h1 className="text-4xl lg:text-6xl mb-4 text-gray-600 font-semibold">{post.title}</h1>
+        <p className="text-sm text-gray-600 mb-4">Posted <b>{format(post.createdAt)}</b> by <b>{post.userId?.username}</b></p>
+        <div className='flex gap-2'>
+          <p className="lg:w-1/2 text-gray-800 whitespace-pre-line">{post.content}</p>
+          <div className='hidden lg:block w-1/2 rounded-md overflow-hidden bg-white'><img src="/cover.png" alt="cover" className='object-cover' /></div>
+        </div>
 
         {userId === post.userId?._id && (
           <div className="flex justify-end gap-2 text-sm mt-6">

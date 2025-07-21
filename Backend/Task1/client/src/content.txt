@@ -1,0 +1,42 @@
+[
+  {
+    "title": "What I Learned From a Week Without My Phone",
+    "content": "## Day 1: Withdrawal Symptoms\nI didn't expect the urge to constantly check my phone...\n\n## Day 3: Unexpected Freedom\nWithout notifications, I became more present...\n\n## Conclusion: Reclaiming Control\nI now use my phone more intentionally."
+  },
+  {
+    "title": "The Power of Morning Routines",
+    "content": "## Why Mornings Matter\nMorning habits set the tone for the day...\n\n## My Routine\nWake at 6am, 10 min meditation, journaling, then exercise...\n\n## How It Changed My Life\nI feel less reactive, more productive, and focused."
+  },
+  {
+    "title": "How I Built My First Web App",
+    "content": "## The Idea\nA simple to-do app for managing tasks.\n\n## Tools Used\nReact, Node.js, Express, MongoDB.\n\n## Lessons Learned\nStart small, iterate fast, and never stop learning."
+  },
+  {
+    "title": "Understanding JavaScript Closures",
+    "content": "## What Is a Closure?\nA closure is when a function retains access to its lexical scope...\n\n## Why It Matters\nClosures allow for private variables and functional patterns..."
+  },
+  {
+    "title": "My Journey into Fitness",
+    "content": "## From Couch to 5K\nI started with daily walks, then progressed to running.\n\n## Discipline > Motivation\nScheduling workouts helped me stay consistent.\n\n## Mental Benefits\nImproved sleep, reduced anxiety, better mood."
+  },
+  {
+    "title": "Lessons from My First Freelance Client",
+    "content": "## The Pitch\nI reached out on LinkedIn and got my first gig.\n\n## Communication Is Key\nFrequent check-ins prevented scope creep.\n\n## Value Delivery\nUnderpromise, overdeliver, and always be professional."
+  },
+  {
+    "title": "How Reading Changed My Life",
+    "content": "## Books That Made an Impact\n- Atomic Habits\n- Deep Work\n\n## New Perspectives\nReading rewired how I think and improved focus.\n\n## Making It a Habit\nI read 20 mins each morning with coffee."
+  },
+  {
+    "title": "Mastering Git for Team Projects",
+    "content": "## Why Git?\nVersion control is critical for collaboration.\n\n## Key Commands\n- `git clone`\n- `git branch`\n- `git pull`\n- `git merge`\n\n## Pro Tips\nUse meaningful commit messages and frequent pushes."
+  },
+  {
+    "title": "How I Learned to Cook During Lockdown",
+    "content": "## Starting from Zero\nI couldn’t boil an egg. YouTube was my teacher.\n\n## My Favorites\nPasta, curry, homemade bread.\n\n## Cooking as Therapy\nChopping vegetables is my meditation now."
+  },
+  {
+    "title": "What I Wish I Knew Before College",
+    "content": "## Time Management > Studying More\nUse a calendar. Plan downtime. It’s okay to say no.\n\n## Build Relationships\nProfessors, peers, alumni — they open doors.\n\n## Final Thought\nYou don’t have to have it all figured out."
+  }
+]

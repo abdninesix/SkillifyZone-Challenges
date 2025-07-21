@@ -8,6 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-    <ToastContainer />
+    <ToastContainer position='bottom-right' pauseOnHover={false} pauseOnFocusLoss={false} />
   </StrictMode>
 );

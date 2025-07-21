@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div className="px-8 md:px-16 lg:px-32 xl:px-48 duration-200">
+      <div className="px-8 md:px-16 lg:px-32 xl:px-48 duration-200 overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/post/:id" element={<PostDetail />} />
