@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div className="px-8 md:px-16 lg:px-32 xl:px-48 duration-200">
+      <div className="px-8 md:px-16 lg:px-32 xl:px-48 overflow-x-hidden duration-200">
         <Routes>
           <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/about" element={<About />} />
