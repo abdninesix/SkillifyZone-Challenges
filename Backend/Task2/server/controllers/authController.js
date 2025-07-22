@@ -12,14 +12,16 @@ export const register = async (req, res) => {
     const userExists = await User.findOne({ email });
     if (userExists) return res.status(400).json({ message: 'User already exists' });
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await User.create({ username, email, password: hashedPassword });
+    const newUser = new User({ username, email, password });
+    await newUser.save();
 
-    res.status(201).json({ 
-      _id: newUser._id, 
+    res.status(201).json({
+      _id: newUser._id,
+      username: newUser.username,
       email: newUser.email,
-      token: generateToken(newUser._id) 
+      token: generateToken(newUser),
     });
+
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
   }
@@ -27,21 +29,35 @@ export const register = async (req, res) => {
 
 // Login User
 export const login = async (req, res) => {
-  const { email, password } = req.body;
   try {
+    const { email, password } = req.body;
+
+    // Find user
     const user = await User.findOne({ email });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid email' });
     }
 
-    res.status(200).json({
+    const isMatch = await user.matchPassword(password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid password' });
+    }
+
+    res.json({
       _id: user._id,
+      username: user.username,
       email: user.email,
-      token: generateToken(user._id),
+      token: generateToken(user),
     });
-  } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+
+  } catch (error) {
+    res.status(500).json({ message: 'Login failed', error: error.message });
   }
+};
+
+// Get Logged In User Profile
+export const getProfile = (req, res) => {
+  res.status(200).json(req.user);
 };
 
 // Forgot Password
@@ -81,12 +97,12 @@ export const resetPassword = async (req, res) => {
 
     if (!user) return res.status(400).json({ message: 'Invalid or expired token' });
 
-    user.password = await bcrypt.hash(password, 10);
+    user.password = password;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
 
     await user.save();
-    res.status(200).json({ message: 'Password reset successful. You can now log in.' });
+    res.status(200).json({ message: 'Password reset successful.' });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
   }

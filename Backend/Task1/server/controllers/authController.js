@@ -32,12 +32,12 @@ export const loginUser = async (req, res) => {
     // Find user
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: 'Invalid email' });
     }
 
     const isMatch = await user.matchPassword(password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: 'Invalid password' });
     }
 
     res.json({

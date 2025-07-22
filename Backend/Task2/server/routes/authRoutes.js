@@ -5,7 +5,9 @@ import {
   login,
   forgotPassword,
   resetPassword,
+  getProfile,
 } from '../controllers/authController.js';
+import { protect } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
@@ -16,5 +18,8 @@ router.post('/login', login);
 // Password Reset Routes
 router.post('/forgot-password', forgotPassword);
 router.post('/reset-password/:token', resetPassword);
+
+// Get profile
+router.get('/profile', protect, getProfile);
 
 export default router;
