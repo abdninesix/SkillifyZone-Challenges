@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
@@ -11,6 +12,7 @@ const FileUpload = () => {
     const selected = e.target.files[0];
     if (selected) {
       setFile(selected);
+      setResponse({ name: selected.name });
       if (selected.type.startsWith("image")) {
         setPreview(URL.createObjectURL(selected));
       } else {
@@ -20,8 +22,10 @@ const FileUpload = () => {
   };
 
   const handleUpload = async () => {
-    if (!file) return setError("Please select a file first.");
-    setError("");
+    if (!file) {
+      toast.error("Please select a file first.");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("file", file);
@@ -31,8 +35,14 @@ const FileUpload = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setResponse(res.data.file);
+      toast.success("File uploaded successfully!");
+
+      setFile(null);
+      setPreview(null);
+      setResponse(null);
     } catch (err) {
-      setError(err.response?.data?.error || "Upload failed.");
+      console.error(err);
+      toast.error(err.response?.data?.error || "Upload failed.");
     }
   };
 
@@ -66,7 +76,6 @@ const FileUpload = () => {
 
           {response && (
             <div className="mt-4 text-green-700">
-              <p>File uploaded:</p>
               <a
                 href={response.url}
                 target="_blank"

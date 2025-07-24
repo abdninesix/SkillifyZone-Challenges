@@ -46,7 +46,7 @@ export const getFiles = async (req, res) => {
   }
 };
 
-// Detete a file by ID
+// Delete a file by ID
 export const deleteFile = async (req, res) => {
   try {
     const fileDoc = await File.findById(req.params.id);
@@ -55,8 +55,14 @@ export const deleteFile = async (req, res) => {
       return res.status(404).json({ error: 'File not found' });
     }
 
+    const fileId = fileDoc.fileId;
+    const fileUrl = fileDoc.url;
+
     // Delete from ImageKit using fileId
-    await imagekit.deleteFile(fileDoc.fileId);
+    await imagekit.deleteFile(fileId);
+
+    // Purge the file from CDN cache using its URL
+    await imagekit.purgeCache(fileUrl);
 
     // Delete from MongoDB
     await File.findByIdAndDelete(req.params.id);
@@ -67,3 +73,4 @@ export const deleteFile = async (req, res) => {
     res.status(500).json({ error: 'Failed to delete file', details: error.message });
   }
 };
+

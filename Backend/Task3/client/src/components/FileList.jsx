@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from 'react-toastify';
 import axios from "axios";
 
 const FileList = () => {
@@ -19,15 +20,14 @@ const FileList = () => {
     }, []);
 
     const handleDelete = async (id) => {
-        const confirm = window.confirm("Are you sure you want to delete this file?");
-        if (!confirm) return;
-
         try {
             await axios.delete(`http://localhost:3000/api/upload/${id}`);
             setFiles(files.filter((file) => file._id !== id));
+
+            toast.success("File deleted successfully!");
         } catch (err) {
             console.error(err);
-            setError("Failed to delete file.");
+            toast.error("Failed to delete file. Please try again.");
         }
     };
 
@@ -40,18 +40,21 @@ const FileList = () => {
             ) : (
                 <div className="flex flex-wrap gap-4 mt-4">
                     {files.map((file) => (
-                        <div
+                        <a
+                            href={file.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             key={file._id}
-                            className="md:w-72 md:h-56 bg-gray-200 rounded-lg p-4 flex flex-col"
+                            className="md:w-72 bg-gray-200 rounded-lg p-4 flex flex-col justify-center items-center"
                         >
                             {file.type.startsWith("image") ? (
                                 <img
                                     src={file.url}
                                     alt={file.name}
-                                    className="object-cover mb-2 rounded"
+                                    className="h-32 object-cover mb-2 rounded"
                                 />
                             ) : (
-                                <div className="w-32 h-32 flex items-center justify-center bg-gray-100 text-sm text-gray-600 mb-2">
+                                <div className="w-full h-32 flex items-center justify-center bg-gray-100 text-sm text-gray-600 mb-2">
                                     {file.type.includes("pdf")
                                         ? "PDF"
                                         : file.type.includes("word")
@@ -61,23 +64,17 @@ const FileList = () => {
                             )}
 
                             <p className="text-sm">{file.name.slice(0, 20)}...</p>
-                            <div className="w-full flex justify-end gap-4">
-                                <a
-                                    href={file.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-blue-500 hover:underline text-sm"
-                                >
-                                    View
-                                </a>
-                                <button
-                                    onClick={() => handleDelete(file._id)}
-                                    className="text-red-500 cursor-pointer hover:underline text-sm"
-                                >
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();    // ✅ Prevent anchor navigation
+                                    e.stopPropagation();   // ✅ Prevent bubbling up to <a>
+                                    handleDelete(file._id);
+                                }}
+                                className="text-red-500 cursor-pointer hover:underline text-sm"
+                            >
+                                Delete
+                            </button>
+                        </a>
                     ))}
                 </div>
             )}
