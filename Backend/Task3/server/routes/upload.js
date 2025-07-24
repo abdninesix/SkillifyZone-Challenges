@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import { uploadFile } from '../controllers/uploadController.js';
+import { deleteFile, getFiles, uploadFile } from '../controllers/uploadController.js';
 
 const router = express.Router();
 
@@ -11,6 +11,9 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
 });
 
+// Routes
 router.post('/', upload.single('file'), uploadFile);
+router.get('/', getFiles);
+router.delete('/:id', deleteFile);
 
 export default router;

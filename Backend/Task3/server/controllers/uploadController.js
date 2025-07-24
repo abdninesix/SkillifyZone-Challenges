@@ -25,11 +25,45 @@ export const uploadFile = async (req, res) => {
       type: file.mimetype,
       size: file.size,
       url: response.url,
+      fileId: response.fileId,
     });
 
     res.status(200).json({ message: 'File uploaded', file: savedFile });
   } catch (error) {
     console.error('Upload error:', error);
     res.status(500).json({ error: 'Something went wrong' });
+  }
+};
+
+// Get all uploaded files
+export const getFiles = async (req, res) => {
+  try {
+    const files = await File.find().sort({ uploadedAt: -1 });
+    res.status(200).json({ files });
+  } catch (err) {
+    console.error('Fetch error:', err);
+    res.status(500).json({ error: 'Could not fetch files' });
+  }
+};
+
+// Detete a file by ID
+export const deleteFile = async (req, res) => {
+  try {
+    const fileDoc = await File.findById(req.params.id);
+
+    if (!fileDoc) {
+      return res.status(404).json({ error: 'File not found' });
+    }
+
+    // Delete from ImageKit using fileId
+    await imagekit.deleteFile(fileDoc.fileId);
+
+    // Delete from MongoDB
+    await File.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({ message: 'File deleted successfully' });
+  } catch (error) {
+    console.error('Delete error:', error);
+    res.status(500).json({ error: 'Failed to delete file', details: error.message });
   }
 };

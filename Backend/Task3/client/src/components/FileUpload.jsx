@@ -37,8 +37,8 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-xl">
+    <div className="flex items-center justify-center">
+      <div className="mx-auto p-6 bg-white shadow-md rounded-xl mt-20">
         <h2 className="text-xl font-bold mb-4">Upload a File</h2>
         <input
           type="file"
@@ -53,7 +53,7 @@ const FileUpload = () => {
 
         <button
           onClick={handleUpload}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700"
         >
           Upload
         </button>

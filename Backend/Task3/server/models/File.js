@@ -5,10 +5,7 @@ const fileSchema = new mongoose.Schema({
   type: String,
   size: Number,
   url: String,
-  uploadedAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  fileId: String, // ImageKit file ID
+},{timestamps: true});
 
 export default mongoose.model('File', fileSchema);
