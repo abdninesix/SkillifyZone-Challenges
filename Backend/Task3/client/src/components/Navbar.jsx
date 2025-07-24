@@ -2,15 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
-  const token = localStorage.getItem('token');
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/login');
-    setIsOpen(false);
-  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -18,25 +11,15 @@ function Navbar() {
 
   const NavLinks = () => (
     <>
-      {!token ? (
-        <>
-          <Link to="/about" className="hover:underline" onClick={() => setIsOpen(false)}>About</Link>
-          <Link to="/login" className="hover:underline" onClick={() => setIsOpen(false)}>Login</Link>
-          <Link to="/register" className="hover:underline" onClick={() => setIsOpen(false)}>Register</Link>
-        </>
-      ) : (
-        <>
-          <Link to="/" className="hover:underline" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/about" className="hover:underline" onClick={() => setIsOpen(false)}>About</Link>
-          <button onClick={handleLogout} className="hover:underline">Logout</button>
-        </>
-      )}
+      <Link to="/" className="hover:underline" onClick={() => setIsOpen(false)}>Home</Link>
+      <Link to="/upload" className="hover:underline" onClick={() => setIsOpen(false)}>Upload</Link>
+      <Link to="/about" className="hover:underline" onClick={() => setIsOpen(false)}>About</Link>
     </>
   );
 
   return (
-    <nav className="sticky top-0 z-10 bg-myblue text-white px-8 md:px-16 lg:px-32 xl:px-48 py-3 flex justify-between items-center">
-      <Link to="/" className="font-bold text-2xl">AuthApp</Link>
+    <nav className="sticky top-0 z-10 bg-mycolor text-white px-8 md:px-16 lg:px-32 xl:px-48 py-3 flex justify-between items-center">
+      <Link to="/" className="font-bold text-2xl">FileUpload</Link>
 
       {/* Desktop Links */}
       <div className="hidden md:flex space-x-6 font-medium">

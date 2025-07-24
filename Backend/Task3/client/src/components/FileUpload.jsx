@@ -37,42 +37,55 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="mx-auto p-6 bg-white shadow-md rounded-xl mt-20">
-        <h2 className="text-xl font-bold mb-4">Upload a File</h2>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          className="mb-4"
-          accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
-        />
+    <div className="">
+      <div className="flex gap-4">
+
+        <div className="w-1/3 flex flex-col items-center justify-center gap-10">
+          <label
+            htmlFor="fileUpload"
+            className="w-fit bg-mycolor hover:bg-hovercolor text-white px-4 py-2 rounded cursor-pointer"
+          >
+            Choose File
+          </label>
+          <input
+            id="fileUpload"
+            type="file"
+            onChange={handleFileChange}
+            className="hidden"
+            accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
+          />
+
+
+          {file && (
+            <button
+              onClick={handleUpload}
+              className="w-fit bg-mycolor hover:bg-hovercolor text-white px-4 py-2 rounded cursor-pointer"
+            >
+              Upload
+            </button>)}
+
+          {response && (
+            <div className="mt-4 text-green-700">
+              <p>File uploaded:</p>
+              <a
+                href={response.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-blue-500"
+              >
+                {response.name}
+              </a>
+              {error && <p className="mt-4 text-red-600">{error}</p>}
+            </div>
+          )}
+        </div>
 
         {preview && (
-          <img src={preview} alt="Preview" className="w-40 h-40 object-cover mb-4" />
-        )}
-
-        <button
-          onClick={handleUpload}
-          className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700"
-        >
-          Upload
-        </button>
-
-        {response && (
-          <div className="mt-4 text-green-700">
-            <p>File uploaded:</p>
-            <a
-              href={response.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-blue-500"
-            >
-              {response.name}
-            </a>
+          <div className="w-2/3">
+            <img src={preview} alt="Preview" className="object-cover" />
           </div>
         )}
 
-        {error && <p className="mt-4 text-red-600">{error}</p>}
       </div>
     </div>
   );

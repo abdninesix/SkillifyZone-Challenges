@@ -32,24 +32,23 @@ const FileList = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto mt-20">
-            <h2 className="text-2xl font-bold mb-4">Uploaded Files</h2>
+        <div className="mx-auto">
             {error && <p className="text-red-500">{error}</p>}
 
             {files.length === 0 ? (
                 <p>No files uploaded yet.</p>
             ) : (
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 mt-4">
                     {files.map((file) => (
                         <div
                             key={file._id}
-                            className="w-72 bg-white shadow-md rounded-lg p-4 flex flex-col items-center"
+                            className="md:w-72 md:h-56 bg-gray-200 rounded-lg p-4 flex flex-col"
                         >
                             {file.type.startsWith("image") ? (
                                 <img
                                     src={file.url}
                                     alt={file.name}
-                                    className="h-32 w-32 object-cover mb-2 rounded"
+                                    className="object-cover mb-2 rounded"
                                 />
                             ) : (
                                 <div className="w-32 h-32 flex items-center justify-center bg-gray-100 text-sm text-gray-600 mb-2">
@@ -61,8 +60,8 @@ const FileList = () => {
                                 </div>
                             )}
 
-                            <p className="text-sm break-words text-">{file.name.slice(0, 20)}...</p>
-                            <div className="w-full flex justify-between">
+                            <p className="text-sm">{file.name.slice(0, 20)}...</p>
+                            <div className="w-full flex justify-end gap-4">
                                 <a
                                     href={file.url}
                                     target="_blank"
