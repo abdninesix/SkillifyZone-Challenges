@@ -9,6 +9,7 @@ function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [userId, setUserId] = useState('');
+  const [userRole, setUserRole] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function PostDetail() {
       if (!token) return;
       const payload = JSON.parse(atob(token.split('.')[1]));
       setUserId(payload.id);
+      setUserRole(payload.role);
     };
 
     fetchPost();
@@ -61,8 +63,8 @@ function PostDetail() {
           <div className='hidden lg:block w-1/2 rounded-md overflow-hidden shadow-md'><img src="/cover.png" alt="cover" className='object-cover' /></div>
         </div>
 
-        {userId === post.userId?._id && (
-          <div className="flex justify-end gap-2 text-sm mt-6">
+        {(userId === post.userId?._id || userRole === 'admin') && (
+          <div className="flex justify-center gap-2 text-sm mt-6">
             <Link
               to={`/edit/${post._id}`}
               className="text-myblue hover:underline"
