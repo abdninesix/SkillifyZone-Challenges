@@ -29,7 +29,7 @@ function Navbar() {
         <>
           <Link to="/new" className="hover:underline" onClick={() => setIsOpen(false)}>Write</Link>
           <Link to="/about" className="hover:underline" onClick={() => setIsOpen(false)}>About</Link>
-          <button onClick={handleLogout} className="hover:underline">Logout</button>
+          <button onClick={handleLogout} className="cursor-pointer hover:underline">Logout</button>
         </>
       )}
     </>
@@ -37,7 +37,7 @@ function Navbar() {
 
   return (
     <nav className="sticky top-0 z-10 bg-myblue text-white px-8 md:px-16 lg:px-32 xl:px-48 py-3 flex justify-between items-center">
-      <Link to="/" className="font-bold text-2xl">BlogAPIs</Link>
+      <Link to="/" className="font-bold text-2xl">RBAC</Link>
 
       {/* Desktop Links */}
       <div className="hidden md:flex space-x-6 font-medium">

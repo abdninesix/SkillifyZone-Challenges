@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import API from '../api/axios';
 import { Link } from 'react-router-dom';
-import Banner from '../componenets/Banner';
+import Banner from '../components/Banner';
 import { format } from 'timeago.js';
 
 

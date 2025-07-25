@@ -51,9 +51,9 @@ function Login() {
           <button type="submit" className="w-full bg-myblue cursor-pointer text-white p-2 rounded hover:bg-hoverblue">
             Login
           </button>
-          <Link to="/forgot-password" className="text-center w-full text-sm cursor-pointer text-myblue hover:underline">
-            Forgot password? Click here
-          </Link>
+          <span className='text-center w-full text-sm'>
+            Forgot password? <Link to="/forgot-password" className="text-myblue hover:underline">Click here</Link>
+          </span>
         </form>
       </div>
     </>

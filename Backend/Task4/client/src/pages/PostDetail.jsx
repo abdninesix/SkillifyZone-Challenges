@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
-import Banner from '../componenets/Banner';
+import Banner from '../components/Banner';
 import { format } from 'timeago.js';
 
 function PostDetail() {
@@ -67,7 +67,7 @@ function PostDetail() {
           <div className="flex justify-center gap-2 text-sm mt-6">
             <Link
               to={`/edit/${post._id}`}
-              className="text-myblue hover:underline"
+              className="text-blue-500 hover:underline"
             >
               Edit
             </Link>

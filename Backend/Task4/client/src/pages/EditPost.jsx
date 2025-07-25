@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
-import Banner from '../componenets/Banner';
+import Banner from '../components/Banner';
 
 function EditPost() {
   const { id } = useParams();
@@ -45,7 +45,7 @@ function EditPost() {
             name="title"
             value={form.title}
             onChange={handleChange}
-            className="w-full outline-none p-2 border rounded"
+            className="w-full outline-none bg-white p-2 rounded"
             required
           />
           <textarea
@@ -53,7 +53,7 @@ function EditPost() {
             value={form.content}
             onChange={handleChange}
             rows="8"
-            className="w-full outline-none p-2 border rounded"
+            className="w-full outline-none bg-white p-2 rounded"
             required
           ></textarea>
           <button type="submit" className="w-full cursor-pointer bg-myblue text-white p-2 rounded">

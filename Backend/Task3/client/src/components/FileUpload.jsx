@@ -48,12 +48,12 @@ const FileUpload = () => {
 
   return (
     <div className="">
-      <div className="flex gap-4">
+      <div className="flex flex-col lg:flex-row gap-4">
 
-        <div className="w-1/3 flex flex-col items-center justify-center gap-10">
+        <div className="lg:w-1/3 bg-amber-40 flex flex-col items-center gap-4 mt-20">
           <label
             htmlFor="fileUpload"
-            className="w-fit bg-mycolor hover:bg-hovercolor text-white px-4 py-2 rounded cursor-pointer"
+            className="w-32 text-center bg-mycolor hover:bg-hovercolor text-white px-4 py-2 rounded cursor-pointer"
           >
             Choose File
           </label>
@@ -69,13 +69,14 @@ const FileUpload = () => {
           {file && (
             <button
               onClick={handleUpload}
-              className="w-fit bg-mycolor hover:bg-hovercolor text-white px-4 py-2 rounded cursor-pointer"
+              className="w-32 text-center bg-mycolor hover:bg-hovercolor text-white px-4 py-2 rounded cursor-pointer"
             >
               Upload
             </button>)}
 
           {response && (
-            <div className="mt-4 text-green-700">
+            <div className="hidden lg:flex flex-col text-green-700 text-center">
+              <p className="font-medium">File name: </p>
               <a
                 href={response.url}
                 target="_blank"
@@ -90,8 +91,22 @@ const FileUpload = () => {
         </div>
 
         {preview && (
-          <div className="w-2/3">
-            <img src={preview} alt="Preview" className="object-cover" />
+          <div className="lg:w-2/3 p-4">
+            <img src={preview} alt="Preview" className="rounded-xl object-cover" />
+          </div>
+        )}
+        {response && (
+          <div className="lg:hidden flex flex-col text-green-700 text-center">
+            <p className="font-medium">File name: </p>
+            <a
+              href={response.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-blue-500"
+            >
+              {response.name}
+            </a>
+            {error && <p className="mt-4 text-red-600">{error}</p>}
           </div>
         )}
 

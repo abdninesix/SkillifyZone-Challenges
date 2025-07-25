@@ -45,13 +45,13 @@ const FileList = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             key={file._id}
-                            className="md:w-72 bg-gray-200 rounded-lg p-4 flex flex-col justify-center items-center"
+                            className="w-full lg:w-72 bg-gray-200 rounded-lg p-4 flex flex-col"
                         >
                             {file.type.startsWith("image") ? (
                                 <img
                                     src={file.url}
                                     alt={file.name}
-                                    className="h-32 object-cover mb-2 rounded"
+                                    className="lg:h-32 object-cover mb-2 rounded"
                                 />
                             ) : (
                                 <div className="w-full h-32 flex items-center justify-center bg-gray-100 text-sm text-gray-600 mb-2">
@@ -63,14 +63,14 @@ const FileList = () => {
                                 </div>
                             )}
 
-                            <p className="text-sm">{file.name.slice(0, 20)}...</p>
+                            <p className="text-sm">{file.name.slice(0, 40)}...</p>
                             <button
                                 onClick={(e) => {
                                     e.preventDefault();    // ✅ Prevent anchor navigation
                                     e.stopPropagation();   // ✅ Prevent bubbling up to <a>
                                     handleDelete(file._id);
                                 }}
-                                className="text-red-500 cursor-pointer hover:underline text-sm"
+                                className="text-red-500 text-right cursor-pointer hover:underline text-sm"
                             >
                                 Delete
                             </button>

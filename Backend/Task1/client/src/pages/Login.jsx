@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
-import Banner from '../componenets/Banner';
+import Banner from '../components/Banner';
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });

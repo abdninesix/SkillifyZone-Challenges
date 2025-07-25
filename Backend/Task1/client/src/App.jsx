@@ -5,7 +5,7 @@ import Register from './pages/Register';
 import NewPost from './pages/NewPost';
 import EditPost from './pages/EditPost';
 import PostDetail from './pages/PostDetail';
-import Navbar from './componenets/Navbar';
+import Navbar from './components/Navbar';
 import ProtectedRoute from './auth/ProtectedRoute';
 import About from './pages/About';
 

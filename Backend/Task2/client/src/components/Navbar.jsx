@@ -28,7 +28,7 @@ function Navbar() {
         <>
           <Link to="/" className="hover:underline" onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/about" className="hover:underline" onClick={() => setIsOpen(false)}>About</Link>
-          <button onClick={handleLogout} className="hover:underline">Logout</button>
+          <button onClick={handleLogout} className="cursor-pointer hover:underline">Logout</button>
         </>
       )}
     </>

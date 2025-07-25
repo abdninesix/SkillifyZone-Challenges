@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { toast } from 'react-toastify';
-import Banner from '../componenets/Banner';
+import Banner from '../components/Banner';
 
 function EditPost() {
   const { id } = useParams();

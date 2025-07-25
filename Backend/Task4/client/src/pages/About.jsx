@@ -1,11 +1,11 @@
 import React from 'react';
-import Banner from '../componenets/Banner';
+import Banner from '../components/Banner';
 
 const About = () => {
   return (
     <>
       <Banner text="About This Project" />
-      <div className='flex flex-col-reverse md:flex-row'>
+      <div className='mb-10 flex flex-col-reverse md:flex-row'>
         <div className="max-w-2xl rounded mt-4 space-y-4 text-gray-700">
           <p>
             This project is part of a learning journey focused on building full-stack web applications. In Week 1, the primary goal was to design and implement a RESTful API for a simple blogging platform.
